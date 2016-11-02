@@ -3,6 +3,8 @@ import './App.css';
 import TableRow from './components/tablerowcomponent';
 import mockData from './mockData/data-mock.json';
 
+const moment = require('moment')
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -23,16 +25,11 @@ class App extends Component {
     return mockData.channels
   }
 
-  _dateFormat(date){
-    let outputDate = new Date(date);
-    return((outputDate.getMonth() + 1) + "/" + outputDate.getDate() + "/" + outputDate.getFullYear())
-  }
-
   render() {
     let tableRows = this.state.tableData.map(row =>
       <TableRow key={row.id} id={row.id} imageSrc={row.thumb_url_default}
                 title={row.title} views={row.views}
-                createdDate={this._dateFormat(row.created_on)}>
+                createdDate={moment(row.created_on).format('MMM D, YYYY h:mm A')}>
       </TableRow>)
     return (
       <div className="App">

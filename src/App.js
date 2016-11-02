@@ -24,11 +24,14 @@ class App extends Component {
   }
 
   render() {
-    var tableRows = this.state.tableData.map(row =>
-      <TableRow key={row.id} id={row.id} imageSrc={row.thumb_url_default} title={row.title} views={row.views} createdDate={(row.created_on).toString()}>
+    let tableRows = this.state.tableData.map(row =>
+      <TableRow key={row.id} id={row.id} imageSrc={row.thumb_url_default}
+                title={row.title} views={row.views}
+                createdDate={(row.created_on).toString()}>
       </TableRow>)
     return (
       <div className="App">
+        <header> Studio71 Channels</header>
         <div className="search-bar-container">
           <form>
             Filter Results:

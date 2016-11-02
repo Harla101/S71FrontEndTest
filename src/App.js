@@ -23,11 +23,16 @@ class App extends Component {
     return mockData.channels
   }
 
+  _dateFormat(date){
+    let outputDate = new Date(date);
+    return((outputDate.getMonth() + 1) + "/" + outputDate.getDate() + "/" + outputDate.getFullYear())
+  }
+
   render() {
     let tableRows = this.state.tableData.map(row =>
       <TableRow key={row.id} id={row.id} imageSrc={row.thumb_url_default}
                 title={row.title} views={row.views}
-                createdDate={(row.created_on).toString()}>
+                createdDate={this._dateFormat(row.created_on)}>
       </TableRow>)
     return (
       <div className="App">

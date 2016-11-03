@@ -17,13 +17,13 @@ header {
   width: 100%;
 }
 
-.results-container {
+.table-container {
   background-color: yellow;
   overflow: hidden;
   width: 90%;
 }
 
-.results-container table {
+.table-container table {
   width: 100%;
   vertical-align: middle;
 }

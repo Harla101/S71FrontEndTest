@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import TableRow from './components/tablerowcomponent';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
-
-const moment = require('moment')
+import TableContainer from './components/TableContainer';
 
 class App extends Component {
   constructor(props) {
@@ -14,8 +12,8 @@ class App extends Component {
       visibleTableData:[],
       favoriteIDs: {}
     }
-    this._sortBy = this._sortBy.bind(this);
-    this._handleFavorite = this._handleFavorite.bind(this);
+    this.sortBy = this.sortBy.bind(this);
+    this.handleFavorite = this.handleFavorite.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.sortDirection = null;
     this.currentSort = null;
@@ -42,7 +40,7 @@ class App extends Component {
       })
   }
 
-  _sortBy(e) {
+  sortBy(e) {
     if (e) this.currentSort=e.target.innerHTML
     this.sortDirection === 'ascend'? this.sortDirection='descend': this.sortDirection='ascend'
     switch (this.currentSort) {
@@ -54,9 +52,6 @@ class App extends Component {
         break;
       case 'Date Created':
         this._sortTableData('created_on')
-        break;
-      case 'Favorite':
-        this._sortTableData('title')
         break;
       default:
         console.log("nothing valid")
@@ -94,23 +89,6 @@ class App extends Component {
     this.setState({visibleTableData: valuesToSort})
   }
 
-  _prettyNumber(num) {
-    let value= [];
-    const numLength = num.toString().length;
-    if (numLength < 4) return num;
-    let counter = 0;
-    for(let i = numLength - 1; i >= 0; i--){
-      if(counter % 3 === 0 && counter !== 0){
-        value.unshift(',');
-        value.unshift(num.toString().charAt(i))
-        counter++;
-      } else {
-        value.unshift(num.toString().charAt(i))
-        counter++;
-      }
-    }
-    return value.join('')
-  }
 
   handleSearch(e) {
     let rowsToShow = this.state.APIData.filter(data => data.title.toUpperCase().includes(e.target.value.toUpperCase()));
@@ -124,7 +102,7 @@ class App extends Component {
 
 
 // Would also do a POST to store user favorites to backend DB
-  _handleFavorite(e){
+  handleFavorite(e){
     e.persist();
     this.setState(previousState=>{
       if(previousState['favoriteIDs'][e.target.id]){
@@ -137,16 +115,6 @@ class App extends Component {
   }
 
   render() {
-    let tableRows = [];
-    if(this.state.visibleTableData){  tableRows = this.state.visibleTableData.map(row =>
-      <TableRow key={row.id} id={row.id} imageSrc={row.thumb_url_default}
-                title={row.title} views={this._prettyNumber(row.views)}
-                createdDate={moment(row.created_on).format('MMM D, YYYY h:mm A')}
-                handleFavorite={this._handleFavorite}
-                isFavorited={this['state']['favoriteIDs'][row.id]? true:false}
-                >
-      </TableRow>)
-    }
     return (
       <div className="App">
         <Header />
@@ -154,20 +122,12 @@ class App extends Component {
           handleSubmit={this.handleSubmit}
           handleSearch={this.handleSearch}
           />
-        <div className='results-container'>
-          <table>
-            <tbody>
-              <tr className='table-headers'>
-                <th></th>
-                <th onClick={this._sortBy} className='sortable'>Title</th>
-                <th onClick={this._sortBy} className='sortable'>Views</th>
-                <th onClick={this._sortBy} className='sortable'>Date Created</th>
-                <th className='sortable'>Favorite</th>
-              </tr>
-                {(tableRows.length === 0)? <tr><td>No Results</td></tr>: tableRows}
-            </tbody>
-          </table>
-        </div>
+        <TableContainer
+          visibleTableData={this.state.visibleTableData}
+          handleFavorite={this.handleFavorite}
+          favoriteIDs={this.state.favoriteIDs}
+          sortBy={this.sortBy}
+        />
       </div>
     );
   }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import TableRow from './components/tablerowcomponent';
+import Header from './components/Header';
+import SearchBar from './components/SearchBar';
 
 const moment = require('moment')
 
@@ -14,6 +16,7 @@ class App extends Component {
     }
     this._sortBy = this._sortBy.bind(this);
     this._handleFavorite = this._handleFavorite.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
     this.sortDirection = null;
     this.currentSort = null;
   }
@@ -109,12 +112,12 @@ class App extends Component {
     return value.join('')
   }
 
-  _handleSearch(e) {
+  handleSearch(e) {
     let rowsToShow = this.state.APIData.filter(data => data.title.toUpperCase().includes(e.target.value.toUpperCase()));
       this.setState({visibleTableData: rowsToShow});
   }
 
-  _handleSubmit(e){
+  handleSubmit(e){
     e.preventDefault();
     return false;
   }
@@ -146,13 +149,11 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <header> Studio71 Channels</header>
-        <div className="search-bar-container">
-          <form onSubmit={this._handleSubmit.bind(this)}>
-            Filter Results:
-            <input type="text" name="video-search" onKeyUp={this._handleSearch.bind(this)}></input>
-          </form>
-        </div>
+        <Header />
+        <SearchBar
+          handleSubmit={this.handleSubmit}
+          handleSearch={this.handleSearch}
+          />
         <div className='results-container'>
           <table>
             <tbody>

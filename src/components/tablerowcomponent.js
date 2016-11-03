@@ -22,17 +22,32 @@ class TableRow extends React.Component {
     }
 
     return (
-    <tr>
-      <td><img alt={this.props.title + ' thumbnail'} src={this.props.imageSrc}></img></td>
-      <td>{this.props.title}</td>
-      <td>{this.props.views}</td>
-      <td>{this.props.createdDate}</td>
-      <td >
-        <i className="fa fa-heart fa-2x" aria-hidden="true" style={divStyle}
-          onClick={this.props.handleFavorite.bind(this)} id={this.props.id}>
-        </i>
-      </td>
-    </tr>
+      <tr>
+        <td>
+          <img
+            alt={this.props.title + ' thumbnail'}
+            src={this.props.imageSrc}
+          />
+        </td>
+        <td>
+          {this.props.title}
+        </td>
+        <td>
+          {this.props.views}
+        </td>
+        <td>
+          {this.props.createdDate}
+        </td>
+        <td >
+          <i
+            className="fa fa-heart fa-2x"
+            aria-hidden="true"
+            style={divStyle}
+            onClick={this.props.handleFavorite.bind(this)}
+            id={this.props.id}
+          />
+        </td>
+      </tr>
     )
   }
 }

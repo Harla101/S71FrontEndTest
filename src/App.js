@@ -33,7 +33,6 @@ class App extends Component {
      .then(function(response) {
         return response.json()
       }).then(function(json) {
-        console.log('json', json['favorite_ids'][0])
         self.setState({favoriteIDs: json['favorite_ids'][0]})
       }).catch(function(ex) {
         console.log('parsing failed', ex)

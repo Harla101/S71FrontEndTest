@@ -40,18 +40,19 @@ class App extends Component {
       })
   }
 
+// calls corresponding sort function based on which header is clicked
   sortBy(e) {
     if (e) this.currentSort=e.target.innerHTML
     this.sortDirection === 'ascend'? this.sortDirection='descend': this.sortDirection='ascend'
     switch (this.currentSort) {
       case 'Title':
-        this._sortTableDataByTitle()
+        this.sortTableDataByTitle()
         break;
       case 'Views':
-        this._sortTableData('views')
+        this.sortTableData('views')
         break;
       case 'Date Created':
-        this._sortTableData('created_on')
+        this.sortTableData('created_on')
         break;
       default:
         console.log("nothing valid")
@@ -60,7 +61,7 @@ class App extends Component {
   }
 
 // Needed to handle Title distinctly for string sorting
-  _sortTableDataByTitle(){
+  sortTableDataByTitle(){
     let valuesToSort = this.state.visibleTableData.map(data => data);
     valuesToSort.sort((a,b)=> {
       if(a['title'].toUpperCase() > b['title'].toUpperCase()){
@@ -75,7 +76,7 @@ class App extends Component {
   }
 
   // Sorting handled for non-string columns
-  _sortTableData(byColumn){
+  sortTableData(byColumn){
     let valuesToSort = this.state.visibleTableData.map(data => data);
     valuesToSort.sort((a,b)=> {
       if(a[byColumn]> b[byColumn]){
@@ -89,17 +90,12 @@ class App extends Component {
     this.setState({visibleTableData: valuesToSort})
   }
 
-
+// provides live updating search/filter based on API Data
   handleSearch(e) {
-    let rowsToShow = this.state.APIData.filter(data => data.title.toUpperCase().includes(e.target.value.toUpperCase()));
-      this.setState({visibleTableData: rowsToShow});
+    let rowsToShow = this.state.APIData.filter(data =>
+      data.title.toUpperCase().includes(e.target.value.toUpperCase()));
+    this.setState({visibleTableData: rowsToShow});
   }
-
-  handleSubmit(e){
-    e.preventDefault();
-    return false;
-  }
-
 
 // Would also do a POST to store user favorites to backend DB
   handleFavorite(e){

@@ -48,18 +48,11 @@ return(
             headerName={'Date Created'}
           />
           <TableHeader
-            className='sortable'
             headerName={'Favorite'}
           />
         </tr>
         {/*Toggles to view tablerows only if array is not empty*/}
-        {(tableRows.length === 0)?
-          <tr>
-            <td>
-              No Results
-            </td>
-          </tr>
-          : tableRows}
+        {(tableRows.length === 0)? <tr><td>No Results</td></tr> : tableRows}
         </tbody>
       </table>
     </div>

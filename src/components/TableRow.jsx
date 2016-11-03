@@ -11,10 +11,9 @@ class TableRow extends React.Component {
   }
 
   render(){
-    let divStyle = {
-      color: 'blue'
-    };
 
+    //indicates/toggles if current row id is stored as user favorite
+    let divStyle = {};
     if(this.props.isFavorited){
       divStyle.color = 'red';
     } else {

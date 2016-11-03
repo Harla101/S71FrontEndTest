@@ -28,6 +28,16 @@ class App extends Component {
      }).catch(function(ex) {
        console.log('parsing failed', ex)
      })
+
+     fetch('userData.json')
+     .then(function(response) {
+        return response.json()
+      }).then(function(json) {
+        console.log('json', json['favorite_ids'][0])
+        self.setState({favoriteIDs: json['favorite_ids'][0]})
+      }).catch(function(ex) {
+        console.log('parsing failed', ex)
+      })
   }
 
   _sortBy(e) {
@@ -152,7 +162,7 @@ class App extends Component {
                 <th onClick={this._sortBy} className='sortable'>Title</th>
                 <th onClick={this._sortBy} className='sortable'>Views</th>
                 <th onClick={this._sortBy} className='sortable'>Date Created</th>
-                <th onClick={this._sortBy} className='sortable'>Favorite</th>
+                <th className='sortable'>Favorite</th>
               </tr>
                 {(tableRows.length === 0)? <tr><td>No Results</td></tr>: tableRows}
             </tbody>

@@ -121,9 +121,7 @@ class App extends Component {
       }
     });
   }
-
-  const
-
+  
   render() {
     return (
       <div className="App">

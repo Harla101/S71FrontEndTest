@@ -145,3 +145,8 @@ header {
 .favorited {
   color: #e81c4f;
 }
+
+/* Misc Styles*/
+.hidden {
+  display: none;
+}

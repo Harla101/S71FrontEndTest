@@ -7,6 +7,10 @@ const moment = require('moment')
 
 function TableContainer(props) {
 
+// hides table until API Data has been loaded
+  let classValue;
+  props.hasLoaded ? classValue="table-container" : classValue="hidden"
+
 //generates table rows from API call in App.js
   let tableRows = [];
   if(props.visibleTableData){  tableRows = props.visibleTableData.map(row =>
@@ -25,7 +29,7 @@ function TableContainer(props) {
 }
 
 return(
-  <div className='table-container'>
+  <div className={classValue}>
     <table>
       <thead>
         <tr className='table-headers'>

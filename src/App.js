@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import TableContainer from './components/TableContainer';
+import Loading from './components/Loading'
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class App extends Component {
     this.state={
       APIData: [],
       visibleTableData:[],
-      favoriteIDs: {}
+      favoriteIDs: {},
+      hasLoaded: false
     }
     this.sortBy = this.sortBy.bind(this);
     this.handleFavorite = this.handleFavorite.bind(this);
@@ -26,7 +28,13 @@ class App extends Component {
     .then(function(response) {
        return response.json()
      }).then(function(json) {
-       self.setState({APIData: json.channels, visibleTableData: json.channels})
+       setTimeout(function(){
+         self.setState({
+           APIData: json.channels,
+           visibleTableData: json.channels,
+           hasLoaded:true})},
+           2000)
+           throw 'ERROR'
      }).catch(function(ex) {
        console.log('parsing failed', ex)
      })
@@ -111,20 +119,25 @@ class App extends Component {
     });
   }
 
+  const
+
   render() {
     return (
       <div className="App">
         <Header />
-        <SearchBar
-          handleSubmit={this.handleSubmit}
-          handleSearch={this.handleSearch}
+          <SearchBar
+            handleSubmit={this.handleSubmit}
+            handleSearch={this.handleSearch}
+            hasLoaded={this.state.hasLoaded}
+            />
+          <TableContainer
+            visibleTableData={this.state.visibleTableData}
+            handleFavorite={this.handleFavorite}
+            hasLoaded={this.state.hasLoaded}
+            favoriteIDs={this.state.favoriteIDs}
+            sortBy={this.sortBy}
           />
-        <TableContainer
-          visibleTableData={this.state.visibleTableData}
-          handleFavorite={this.handleFavorite}
-          favoriteIDs={this.state.favoriteIDs}
-          sortBy={this.sortBy}
-        />
+        <Loading hasLoaded={this.state.hasLoaded}/>
       </div>
     );
   }

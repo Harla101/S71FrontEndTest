@@ -8,8 +8,11 @@ function SearchBar(props) {
       return false;
     }
 
+  let classValue;
+  props.hasLoaded ? classValue="search-bar-container" : classValue="hidden"
+
   return(
-    <div className="search-bar-container">
+    <div className={classValue}>
       <form onSubmit={handleSubmit}>
         <h3>Search for Channel:</h3>
         <input

@@ -5,6 +5,7 @@ import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import TableContainer from './components/TableContainer';
 import Loading from './components/Loading'
+import Error from './components/Error'
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class App extends Component {
       APIData: [],
       visibleTableData:[],
       favoriteIDs: {},
-      hasLoaded: false
+      hasLoaded: false,
+      hasError: false
     }
     this.sortBy = this.sortBy.bind(this);
     this.handleFavorite = this.handleFavorite.bind(this);
@@ -28,15 +30,16 @@ class App extends Component {
     .then(function(response) {
        return response.json()
      }).then(function(json) {
+    //loads async without error;
        setTimeout(function(){
          self.setState({
            APIData: json.channels,
            visibleTableData: json.channels,
            hasLoaded:true})},
            2000)
-           throw 'ERROR'
      }).catch(function(ex) {
        console.log('parsing failed', ex)
+       self.setState({hasLoaded: false, hasError: true})
      })
 
      fetch('userData.json')
@@ -125,19 +128,24 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-          <SearchBar
-            handleSubmit={this.handleSubmit}
-            handleSearch={this.handleSearch}
-            hasLoaded={this.state.hasLoaded}
-            />
-          <TableContainer
-            visibleTableData={this.state.visibleTableData}
-            handleFavorite={this.handleFavorite}
-            hasLoaded={this.state.hasLoaded}
-            favoriteIDs={this.state.favoriteIDs}
-            sortBy={this.sortBy}
+        <SearchBar
+          handleSubmit={this.handleSubmit}
+          handleSearch={this.handleSearch}
+          hasLoaded={this.state.hasLoaded}
           />
-        <Loading hasLoaded={this.state.hasLoaded}/>
+        <TableContainer
+          visibleTableData={this.state.visibleTableData}
+          handleFavorite={this.handleFavorite}
+          hasLoaded={this.state.hasLoaded}
+          favoriteIDs={this.state.favoriteIDs}
+          sortBy={this.sortBy}
+        />
+        <Loading
+          hasLoaded={this.state.hasLoaded}
+          hasError={this.state.hasError}/>
+        <Error
+          hasError={this.state.hasError}
+          hasLoaded={this.state.hasLoaded}/>
       </div>
     );
   }

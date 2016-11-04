@@ -54,7 +54,7 @@ return(
       </thead>
         <tbody>
           {/*Toggles to view tablerows only if array is not empty*/}
-          {(tableRows.length === 0)? <tr><td>No Results</td></tr> : tableRows}
+          {(tableRows.length === 0)? <tr><td className="no-results" colSpan="5">No Results ¯\_(ツ)_/¯ </td></tr> : tableRows}
         </tbody>
       </table>
     </div>

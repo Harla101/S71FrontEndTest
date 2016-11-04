@@ -1,6 +1,9 @@
+/*Would normally use preprocessor like Sass to modularize and next,
+but preprocessors are incompatible with create-react-app*/
+
 /*MAIN STYLING*/
 .App {
-  background-color: #fff;
+  background-color: #fafafa;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -38,7 +41,9 @@ header {
 }
 
 .search-bar-container input {
+  border: none;
   margin-left: 2%;
+  padding-left: 5px;
   height: 50%;
 }
 
@@ -58,13 +63,25 @@ header {
   width: 100%;
 }
 
-.table-headers{
+.table-headers {
   background-color: #5B5D62;
   border-top: 1px solid  #5B5D62;
   color: #fff;
   height: 50px;
   text-align: center;
   vertical-align: middle;
+}
+
+@media only screen and (max-width: 600px) {
+    .table-headers{
+        display: none;
+    }
+
+    .table-row {
+      display: flex;
+      flex-flow: column;
+      height: 200px;
+    }
 }
 
 .sortable {
@@ -82,7 +99,12 @@ header {
 }
 
 .table-row td {
-  max-height: 150px;
+  font-size: 1.2em;
+  height: 150px;
+  text-align: center;
+}
+
+.no-results {
   text-align: center;
 }
 
@@ -90,14 +112,14 @@ header {
 /*Heart / Favorite Styles */
 .fa-heart {
   cursor: pointer;
-  transition: all 0.4s;
-  color: white;
+  transition: all 0.9s;
+  color: #E6E6E3;
 }
 
-.fa-heart:hover {
-  color: red;
+.not-favorited {
+  color: #ccc;
 }
 
 .favorited {
-  color: red;
+  color: #e81c4f;
 }

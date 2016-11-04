@@ -131,15 +131,3 @@ class App extends Component {
 }
 
 export default App;
-
-//
-// <SearchBar
-//   handleSubmit={this.handleSubmit}
-//   handleSearch={this.handleSearch}
-//   />
-// <TableContainer
-//   visibleTableData={this.state.visibleTableData}
-//   handleFavorite={this.handleFavorite}
-//   favoriteIDs={this.state.favoriteIDs}
-//   sortBy={this.sortBy}
-// />

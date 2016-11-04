@@ -76,8 +76,8 @@ class App extends Component {
 
 // Needed to handle Title distinctly for string sorting
   sortTableDataByTitle(){
-    let valuesToSort = this.state.visibleTableData.map(data => data);
-    valuesToSort.sort((a,b)=> {
+    let sortedValues = this.state.visibleTableData.map(data => data);
+    sortedValues.sort((a,b)=> {
       if(a['title'].toUpperCase() > b['title'].toUpperCase()){
         return this.sortDirection === 'ascend' ? 1 : -1;
       }
@@ -86,13 +86,13 @@ class App extends Component {
       }
         return 0;
     })
-    this.setState({visibleTableData: valuesToSort})
+    this.setState({visibleTableData: sortedValues})
   }
 
   // Sorting handled for non-string columns
   sortTableData(byColumn){
-    let valuesToSort = this.state.visibleTableData.map(data => data);
-    valuesToSort.sort((a,b)=> {
+    let sortedValues = this.state.visibleTableData.map(data => data);
+    sortedValues.sort((a,b)=> {
       if(a[byColumn]> b[byColumn]){
         return this.sortDirection === 'ascend'? 1 : -1;
       }
@@ -101,7 +101,7 @@ class App extends Component {
       }
         return 0;
     })
-    this.setState({visibleTableData: valuesToSort})
+    this.setState({visibleTableData: sortedValues})
   }
 
 // provides live updating search/filter based on API Data

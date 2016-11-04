@@ -26,7 +26,7 @@ class TableRow extends React.Component {
             src={this.props.imageSrc}
           />
         </td>
-        <td>
+        <td className='channel-title'>
           {this.props.title}
         </td>
         <td>

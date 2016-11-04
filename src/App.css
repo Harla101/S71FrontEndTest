@@ -1,7 +1,11 @@
 /*Would normally use preprocessor like Sass to modularize and next,
 but preprocessors are incompatible with create-react-app*/
 
-/*MAIN STYLING*/
+
+/***************
+/*MAIN STYLING*
+***************/
+
 .App {
   background-color: #fafafa;
   display: flex;
@@ -22,7 +26,10 @@ header {
   width: 100%;
 }
 
-/* SEARCH BAR STYLING */
+/***************
+/* SEARCH BAR STYLING
+***************/
+
 .search-bar-container {
   background-color: #E6E6E3;
   display: flex;
@@ -47,7 +54,11 @@ header {
   height: 50%;
 }
 
-/* TABLE STYLING */
+/***************
+/* TABLE STYLING
+***************/
+
+
 .table-container {
   height: 80%;
   overflow: scroll;
@@ -72,18 +83,6 @@ header {
   vertical-align: middle;
 }
 
-@media only screen and (max-width: 600px) {
-    .table-headers{
-        display: none;
-    }
-
-    .table-row {
-      display: flex;
-      flex-flow: column;
-      height: 200px;
-    }
-}
-
 .sortable {
   cursor: pointer;
 }
@@ -104,12 +103,35 @@ header {
   text-align: center;
 }
 
+.channel-title {
+  font-weight: 700;
+}
+
 .no-results {
   text-align: center;
 }
 
+/***************
+/*Resposive Layout and Media Queries*
+***************/
 
-/*Heart / Favorite Styles */
+
+@media only screen and (max-width: 600px) {
+    .table-headers{
+        display: none;
+    }
+
+    .table-row {
+      display: flex;
+      flex-flow: column;
+      height: 300px;
+    }
+}
+
+/***************
+/*Heart and Favorite Styles
+***************/
+
 .fa-heart {
   cursor: pointer;
   transition: all 0.9s;

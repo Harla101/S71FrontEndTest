@@ -13,15 +13,13 @@ class TableRow extends React.Component {
   render(){
 
     //indicates/toggles if current row id is stored as user favorite
-    let divStyle = {};
-    if(this.props.isFavorited){
-      divStyle.color = 'red';
-    } else {
-      divStyle.color = 'white';
-    }
+    let heartClass;
+    (this.props.isFavorited)?
+      heartClass = "fa fa-heart fa-2x favorited":
+      heartClass = "fa fa-heart fa-2x not-favorited";
 
     return (
-      <tr>
+      <tr className='table-row'>
         <td>
           <img
             alt={this.props.title + ' thumbnail'}
@@ -39,9 +37,8 @@ class TableRow extends React.Component {
         </td>
         <td >
           <i
-            className="fa fa-heart fa-2x"
+            className={heartClass}
             aria-hidden="true"
-            style={divStyle}
             onClick={this.props.handleFavorite.bind(this)}
             id={this.props.id}
           />

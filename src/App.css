@@ -1,29 +1,103 @@
-/*STYLING ONLY FOR DEVELOPMENT AND PLACEMENT DEBUGGING*/
-
+/*MAIN STYLING*/
 .App {
-  background-color: red;
+  background-color: #fff;
   display: flex;
-  align-items: center;
   flex-flow: column;
+  align-items: center;
   height: 100%;
-  text-align: center;
-  overflow: hidden;
   width: 100%;
 }
 
 header {
-  background-color: purple;
-  height: 45%;
+  background-color: #fff;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10%;
+  min-height: 90px;
   width: 100%;
 }
 
+/* SEARCH BAR STYLING */
+.search-bar-container {
+  background-color: #E6E6E3;
+  display: flex;
+  justify-content: center;
+  height: 5%;
+  min-height: 45px;
+  width: 100%;
+}
+
+.search-bar-container form {
+  color: #5B5D62;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 90%;
+}
+
+.search-bar-container input {
+  margin-left: 2%;
+  height: 50%;
+}
+
+/* TABLE STYLING */
 .table-container {
-  background-color: yellow;
-  overflow: hidden;
+  height: 80%;
+  overflow: scroll;
+  max-width: 1100px;
   width: 90%;
 }
 
 .table-container table {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  height: 100%;
+  table-layout: fixed;
   width: 100%;
+}
+
+.table-headers{
+  background-color: #5B5D62;
+  border-top: 1px solid  #5B5D62;
+  color: #fff;
+  height: 50px;
+  text-align: center;
   vertical-align: middle;
+}
+
+.sortable {
+  cursor: pointer;
+}
+
+.table-row {
+  background-color: #fff;
+  border: 1px solid #000;
+  transition: all 0.7s;
+}
+
+.table-row:hover {
+  background-color: #E6E6E3;
+}
+
+.table-row td {
+  max-height: 150px;
+  text-align: center;
+}
+
+
+/*Heart / Favorite Styles */
+.fa-heart {
+  cursor: pointer;
+  transition: all 0.4s;
+  color: white;
+}
+
+.fa-heart:hover {
+  color: red;
+}
+
+.favorited {
+  color: red;
 }

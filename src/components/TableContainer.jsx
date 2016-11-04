@@ -27,32 +27,34 @@ function TableContainer(props) {
 return(
   <div className='table-container'>
     <table>
-      <tbody>
+      <thead>
         <tr className='table-headers'>
           <TableHeader
-            headerName={'Thumbnail'}
+            headerName={''}
           />
           <TableHeader
             sortBy={props.sortBy}
-            className='sortable'
-            headerName={'Title'}
+            altClassName='sortable'
+            headerName={'Channel'}
           />
           <TableHeader
             sortBy={props.sortBy}
-            className='sortable'
+            altClassName='sortable'
             headerName={'Views'}
           />
           <TableHeader
             sortBy={props.sortBy}
-            className='sortable'
+            altClassName='sortable'
             headerName={'Date Created'}
           />
           <TableHeader
             headerName={'Favorite'}
           />
         </tr>
-        {/*Toggles to view tablerows only if array is not empty*/}
-        {(tableRows.length === 0)? <tr><td>No Results</td></tr> : tableRows}
+      </thead>
+        <tbody>
+          {/*Toggles to view tablerows only if array is not empty*/}
+          {(tableRows.length === 0)? <tr><td>No Results</td></tr> : tableRows}
         </tbody>
       </table>
     </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './normalize.css'
 import './App.css';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
@@ -45,7 +46,7 @@ class App extends Component {
     if (e) this.currentSort=e.target.innerHTML
     this.sortDirection === 'ascend'? this.sortDirection='descend': this.sortDirection='ascend'
     switch (this.currentSort) {
-      case 'Title':
+      case 'Channel':
         this.sortTableDataByTitle()
         break;
       case 'Views':
@@ -130,3 +131,15 @@ class App extends Component {
 }
 
 export default App;
+
+//
+// <SearchBar
+//   handleSubmit={this.handleSubmit}
+//   handleSearch={this.handleSearch}
+//   />
+// <TableContainer
+//   visibleTableData={this.state.visibleTableData}
+//   handleFavorite={this.handleFavorite}
+//   favoriteIDs={this.state.favoriteIDs}
+//   sortBy={this.sortBy}
+// />

@@ -4,7 +4,8 @@ function TableHeader(props){
   return (
     <th
       onClick={props.sortBy}
-      className='sortable'>
+      className={props.altClassName}
+    >
       {props.headerName}
     </th>
   )

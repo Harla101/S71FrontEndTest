@@ -1,5 +1,17 @@
+html, body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+  overflow: scroll;
+  border: 0;
+  color: #5B5D62;
+  font-family: 'Archivo Narrow', sans-serif;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
 }

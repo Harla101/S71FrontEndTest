@@ -16,11 +16,12 @@ Tasks to Complete:
 - [x] Load the JSON file asynchronously (async handled with promises)
 - [ ] propTypes
 - [ ] component testing
+- [ ] Redux
 
 Future Goals:
 - [ ] handle Async with RxJS
 - [ ] loading animation
-- [ ] Eject from Create React App and use Sass
+- [ ] Eject from Create React App for nuanced configuration
 - [ ] animation and transition effects
 - [ ] arrows on column indicating ascending/descending sort order
 

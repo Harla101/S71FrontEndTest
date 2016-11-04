@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+
 import './normalize.css'
 import './App.css';
+
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import TableContainer from './components/TableContainer';
@@ -77,10 +79,10 @@ class App extends Component {
     let valuesToSort = this.state.visibleTableData.map(data => data);
     valuesToSort.sort((a,b)=> {
       if(a['title'].toUpperCase() > b['title'].toUpperCase()){
-        return this.sortDirection === 'ascend'? 1:-1;
+        return this.sortDirection === 'ascend' ? 1 : -1;
       }
       if(a['title'].toUpperCase() < b['title'].toUpperCase()){
-        return this.sortDirection === 'ascend'? -1:1;
+        return this.sortDirection === 'ascend' ? -1 : 1;
       }
         return 0;
     })
@@ -92,10 +94,10 @@ class App extends Component {
     let valuesToSort = this.state.visibleTableData.map(data => data);
     valuesToSort.sort((a,b)=> {
       if(a[byColumn]> b[byColumn]){
-        return this.sortDirection === 'ascend'? 1:-1;
+        return this.sortDirection === 'ascend'? 1 : -1;
       }
       if(a[byColumn] < b[byColumn]){
-        return this.sortDirection === 'ascend'? -1:1;
+        return this.sortDirection === 'ascend'? -1 : 1;
       }
         return 0;
     })
@@ -121,7 +123,7 @@ class App extends Component {
       }
     });
   }
-  
+
   render() {
     return (
       <div className="App">

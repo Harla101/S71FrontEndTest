@@ -14,6 +14,8 @@ Tasks to Complete:
 - [x] Add a search box to allow users to filter the results as they type
 - [x] Add a favoriting mechanism so that users can 'favorite' a channel (mocked for now, no DB in place)
 - [x] Load the JSON file asynchronously (async handled with promises)
+- [ ] propTypes
+- [ ] component testing
 
 Future Goals:
 - [ ] handle Async with RxJS

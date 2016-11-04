@@ -2,7 +2,7 @@ import React from 'react';
 
 class TableRow extends React.Component {
 
-  //prevents unchanged table rows from re-rendering
+  //prevents unchanged table rows from re-rendering after another is favorited
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props.isFavorited !== nextProps.isFavorited){
       return true;
@@ -11,12 +11,10 @@ class TableRow extends React.Component {
   }
 
   render(){
-
     //indicates/toggles if current row id is stored as user favorite
     let heartClass;
     (this.props.isFavorited)?
-      heartClass = "fa fa-heart fa-2x favorited":
-      heartClass = "fa fa-heart fa-2x not-favorited";
+      heartClass = "fa fa-heart fa-2x favorited" : heartClass = "fa fa-heart fa-2x not-favorited";
 
     return (
       <tr className='table-row'>

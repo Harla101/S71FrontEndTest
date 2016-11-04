@@ -16,7 +16,7 @@ function SearchBar(props) {
       <form onSubmit={handleSubmit}>
         <h3>Search for Channel:</h3>
         <input
-          type="seach"
+          type="search"
           name="video-search"
           onKeyUp={props.handleSearch.bind(this)}>
         </input>

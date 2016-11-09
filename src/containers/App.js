@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 
-import './normalize.css'
 import './App.css';
 
-import Header from './components/Header';
-import SearchBar from './components/SearchBar';
-import TableContainer from './components/TableContainer';
-import Loading from './components/Loading'
-import Error from './components/Error'
+import Header from '../components/Header';
+import SearchBar from '../components/SearchBar';
+import TableContainer from '../components/TableContainer';
+import Loading from '../components/Loading'
+import Error from '../components/Error'
 
 class App extends Component {
   constructor(props) {

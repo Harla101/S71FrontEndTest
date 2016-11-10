@@ -1,6 +1,6 @@
-import React from 'react';
+import React ,{ PropTypes } from 'react';
 
-function SearchBar(props) {
+function SearchBar({ hasLoaded, handleSearch }) {
 
   // prevents input field from handling onSubmit events with enter key press
   function handleSubmit(e){
@@ -9,7 +9,7 @@ function SearchBar(props) {
     }
 
   let classValue;
-  props.hasLoaded ? classValue="search-bar-container" : classValue="hidden"
+  hasLoaded ? classValue="search-bar-container" : classValue="hidden"
 
   return(
     <div className={classValue}>
@@ -18,11 +18,16 @@ function SearchBar(props) {
         <input
           type="search"
           name="video-search"
-          onKeyUp={props.handleSearch.bind(this)}>
+          onKeyUp={handleSearch.bind(this)}>
         </input>
       </form>
     </div>
   )
+}
+
+SearchBar.propTypes = {
+  hasLoaded: PropTypes.bool.isRequired,
+  handleSearch: PropTypes.func.isRequired
 }
 
 export default SearchBar

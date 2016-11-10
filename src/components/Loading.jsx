@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-function Loading(props) {
+function Loading({ hasLoaded }) {
   return (
     <div>
-      {props.hasLoaded ? null : <h1>Loading Channels...</h1> }
+      {hasLoaded ? null : <h1>Loading Channels...</h1> }
     </div>
   )
+}
+
+Loading.propTypes = {
+  hasLoaded: PropTypes.bool.isRequired
 }
 
 export default Loading
